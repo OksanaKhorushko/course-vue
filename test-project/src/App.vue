@@ -5,11 +5,13 @@
       <input
         v-model.number="operand1"
         type="text"
+        name="op1"
       />
       {{ operator }}
       <input
         v-model.number="operand2"
         type="text"
+        name="op2"
       />
       =>
       <input
@@ -21,13 +23,13 @@
     </div>
     <div class="keyboard">
       <div class="row">
-        <button v-for="(item, index) in operators" :key="index" @click="getResult(item)">{{ item }}</button>
+        <button v-for="(item, index) in operators" :key="index" @click="getResult(item)" :name="item">{{ item }}</button>
       </div>
       <div class="numbersShown">
         <input type="checkbox" id="checkbox" v-model="isKeyboardShown" />
         <label for="checkbox">{{ checked }}</label>
         <div v-if="isKeyboardShown">
-          <button v-for="(item, index) in numbers" :key="index" @click="inputValue(item)">{{ item }}</button>
+          <button v-for="(item, index) in numbers" :key="index" @click="inputValue(item)" :name="item">{{ item }}</button>
           <div class="radioBtn">
             <input type="radio" id="operand1" value="operand1" v-model="activeInput">
             <label for="operand1">operand1</label>
